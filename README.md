@@ -1,17 +1,17 @@
 # External CSS Editor Connector for UI Drafter
 
-This program is for styling UI Drafter files
+This program is for styling [UI Drafter](https://uidrafter.com) files
 from standalone editors, and the changes get hot-reloaded.
 
 Supports `.css`, `.less`, and `.scss`
 
-More details: [docs.uidrafter.com/css-editor](https://docs.uidrafter.com/css-editor)
+More details [docs.uidrafter.com/css-editor](https://docs.uidrafter.com/css-editor)
 
 
 ## Install
 ```shell script
 git clone https://github.com/uxtely/css-editor-connector.git
-cd uidrafter-uxtely-css-editor-connector
+cd css-editor-connector
 npm install
 ```
 
@@ -19,7 +19,7 @@ npm install
 ```shell script
 ./connect.js my-styles.less
 ```
-Then click **Connect External Editor** in App
+Then click **Connect External Editor** in UI
 Drafter's **CSS Editor** panel (in Previewer).
 
 You can connect many UI Drafter's, in different browsers
