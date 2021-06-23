@@ -29,7 +29,7 @@ const less = require('less').render;
 const PORT = 29924; // Allowed in CSP
 const DEFAULT_TEMPLATE = 'default-template.css';
 const COMPILATION_FAILURE_CODE = '0';
-const ALLOWED_ORIGINS = process.env.AD_SKIP_ORIGIN_CHECK === 'yes'
+const ALLOWED_ORIGINS = process.env.UXTELY_SKIP_ORIGIN_CHECK === 'yes'
 	? [''] // Only for running tests
 	: ['https://my.uidrafter.com', 'https://free.uidrafter.com'];
 
