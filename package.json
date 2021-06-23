@@ -1,0 +1,20 @@
+{
+  "name": "css-editor-connector",
+  "version": "1.0.0",
+  "license": "ISC",
+  "main": "connect.js",
+  "dependencies": {
+    "less": "4.1.1",
+    "node-watch": "0.7.1",
+    "sass": "1.35.1",
+    "ws": "7.5.0"
+  },
+  "engines": {
+    "node": ">=12.10"
+  },
+  "homepage": "https://docs.uidrafter.com/css-editor",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/uxtely/css-editor-connector.git"
+  }
+}
