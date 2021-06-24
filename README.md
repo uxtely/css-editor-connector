@@ -1,11 +1,12 @@
-# External CSS Editor Connector for UI Drafter
+# CSS Editor Connector for UI&nbsp;Drafter
 
 This program is for styling [UI Drafter](https://uidrafter.com) files
 from standalone editors, and the changes get hot-reloaded.
 
-Supports `.css`, `.less`, and `.scss`
+Supports `.css`, `.less`, `.scss`
 
-More details [docs.uidrafter.com/css-editor](https://docs.uidrafter.com/css-editor)
+## Documentation
+[https://docs.uidrafter.com/css-editor](https://docs.uidrafter.com/css-editor)
 
 
 ## Install
@@ -19,16 +20,15 @@ npm install
 ```shell script
 ./connect.js my-styles.less
 ```
-Then click **Connect External Editor** in UI
-Drafter's **CSS Editor** panel (in Previewer).
+Then, **Previewer** &rarr; **CSS Editor** &rarr; **Connect External Editor**
 
-You can connect many UI Drafter's, in different browsers
-or sizes, and changes will be pushed to all of them.
+![Setup](./README-Setup.png)
 
-### Details
-The program watches for stylesheet changes, and for changes within
-the stylesheet directory. Therefore, imported sheets can trigger
-live-updates too, as long as they're within that directory.
+You can connect many UI Drafters, for example in different
+browsers or sizes, and changes will be pushed to all of them.
+
+The program watches for stylesheet changes, and its directory. Therefore, imported
+sheets can trigger live-updates too, as long as they're within that directory.
 
 
 ## Troubleshooting
