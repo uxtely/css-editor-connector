@@ -25,10 +25,10 @@ Then, **Previewer** &rarr; **CSS Editor** &rarr; **Connect External Editor**
 ![Setup](./README-Setup.png)
 
 You can connect many UI Drafters, for example in different
-browsers or sizes, and changes will be pushed to all of them.
+browsers or sizes, and the changes will be pushed to all of them.
 
-The program watches for stylesheet changes, and its directory. Therefore, imported
-sheets can trigger live-updates too, as long as they're within that directory.
+The program watches for stylesheet changes, and changes in its directory. Therefore,
+imported sheets can trigger live-updates too, as long as they're within that directory.
 
 
 ## Troubleshooting
