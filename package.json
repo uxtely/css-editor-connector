@@ -4,13 +4,13 @@
   "license": "ISC",
   "main": "connect.js",
   "dependencies": {
-    "less": "4.1.1",
-    "node-watch": "0.7.1",
-    "sass": "1.35.1",
-    "ws": "7.5.0"
+    "less": "4.1.2",
+    "node-watch": "0.7.2",
+    "sass": "1.45.1",
+    "ws": "7.5.6"
   },
   "engines": {
-    "node": ">=12.10"
+    "node": ">=16"
   },
   "homepage": "https://docs.uirig.com/css-editor",
   "repository": {

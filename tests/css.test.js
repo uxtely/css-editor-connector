@@ -5,8 +5,14 @@
  */
 
 const {
-	run, onWebSocketMessage, read,
-	append, remove, removeDir, printOK, strictEqual
+	run,
+	read,
+	append,
+	remove,
+	printOK,
+	removeDir,
+	strictEqual,
+	onWebSocketMessage
 } = require('./utils.js');
 
 

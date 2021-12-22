@@ -10,7 +10,7 @@ const { strictEqual } = require('assert');
 const WebSocketClient = require('ws');
 
 
-const CONNECTOR_ADDR = 'http://localhost:29924';
+const CONNECTOR_ADDR = 'ws://localhost:29924';
 
 module.exports = {
 	run(stylesheet, onReady) {
@@ -38,7 +38,7 @@ module.exports = {
 	write(file, data) { fs.writeFileSync(file, data, 'utf8') },
 	append(file, data) { fs.appendFileSync(file, data, 'utf8') },
 	remove(...files) { files.forEach(f => fs.unlinkSync(f)) },
-	removeDir(...dirs) { dirs.forEach(d => fs.rmdirSync(d, { recursive: true })) },
+	removeDir(...dirs) { dirs.forEach(d => fs.rmSync(d, { recursive: true })) },
 
 	strictEqual,
 	printOK(msg) { console.log('✓', msg) }
