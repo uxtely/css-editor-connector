@@ -1,12 +1,12 @@
-# CSS Editor Connector for UI&nbsp;Drafter
+# CSS Editor Connector for UI&nbsp;Rig
 
-This program is for styling [UI Drafter](https://uidrafter.com) files
-from standalone editors, and the changes get hot-reloaded.
+This program is for styling [UI Rig](https://uirig.com) files from standalone
+editors. Your edits will be hot-reloaded into your open UI Rig file.
 
 Supports `.css`, `.less`, `.scss`
 
 ## Documentation
-[https://docs.uidrafter.com/css-editor](https://docs.uidrafter.com/css-editor)
+[https://docs.uirig.com/css-editor](https://docs.uirig.com/css-editor)
 
 
 ## Install
@@ -24,7 +24,7 @@ Then, **Previewer** &rarr; **CSS Editor** &rarr; **Connect External Editor**
 
 ![Setup](./README-Setup.png)
 
-You can connect many UI Drafters, for example in different
+You can connect many UI Rigs, for example in different
 browsers or sizes, and the changes will be pushed to all of them.
 
 The program watches for stylesheet changes, and changes in its directory. Therefore,
@@ -37,7 +37,7 @@ Error Code `EADDRINUSE` means conflict.
 - Is another program using port `29924` on your `localhost`?
 
 Syntax Errors
-- UI Drafter shows _"Error with the stylesheet on the
+- UI Rig shows _"Error with the stylesheet on the
 External Editor Connector. Most likely is a syntax error."_
   - If you're using `.less` or `.scss` check the
   console, it will indicate where the error is.

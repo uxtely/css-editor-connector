@@ -12,7 +12,7 @@
   "engines": {
     "node": ">=12.10"
   },
-  "homepage": "https://docs.uidrafter.com/css-editor",
+  "homepage": "https://docs.uirig.com/css-editor",
   "repository": {
     "type": "git",
     "url": "https://github.com/uxtely/css-editor-connector.git"
