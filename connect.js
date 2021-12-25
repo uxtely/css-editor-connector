@@ -9,7 +9,7 @@
 /**
  * This program:
  * - On init, watches the directory of the passed-in stylesheet.
- * - On sheet edit, compiles and pushes the CSS to the connected Form Rig(s).
+ * - On sheet edit, compiles and pushes the CSS to the connected Formrig(s).
  */
 const usage = `
 Usage Example:
