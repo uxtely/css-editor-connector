@@ -12,7 +12,7 @@
   "engines": {
     "node": ">=16"
   },
-  "homepage": "https://docs.formrig.com/css-editor",
+  "homepage": "https://docs.uxtely.com/css-editor",
   "repository": {
     "type": "git",
     "url": "https://github.com/uxtely/css-editor-connector.git"

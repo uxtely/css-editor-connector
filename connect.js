@@ -9,7 +9,7 @@
 /**
  * This program:
  * - On init, watches the directory of the passed-in stylesheet.
- * - On sheet edit, compiles and pushes the CSS to the connected Formrig(s).
+ * - On sheet edit, compiles and pushes the CSS to the connected Uxtely App(s).
  */
 const usage = `
 Usage Example:
@@ -31,7 +31,7 @@ const DEFAULT_TEMPLATE = 'default-template.css';
 const COMPILATION_FAILURE_CODE = '0';
 const ALLOWED_ORIGINS = process.env.UXTELY_SKIP_ORIGIN_CHECK === 'yes'
 	? [''] // Only for running tests
-	: ['https://my.formrig.com', 'https://free.formrig.com'];
+	: ['https://my.uxtely.com', 'https://free.uxtely.com'];
 
 
 const compilers = new Map([
