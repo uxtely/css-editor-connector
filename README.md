@@ -1,7 +1,7 @@
 # CSS Editor Connector for Uxtely
 
-This program is for styling [Uxtely](https://uxtely.com) files from standalone
-editors. Your edits will be hot-reloaded into your open Uxtely file.
+This program is for styling [Uxtely](https://uxtely.com) files
+from standalone editors. Your edits will be hot-reloaded.
 
 Supports `.css`, `.less`, `.scss`
 
