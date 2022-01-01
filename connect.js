@@ -49,21 +49,32 @@ const sheetPath = path.resolve(process.argv[2] || '');
 const sheetDir = path.dirname(sheetPath);
 const compiler = compilers.get(path.extname(sheetPath));
 
-if (compiler) {
-	ensureSheetExists();
-	init();
-}
-else {
+if (!compiler) {
 	console.error(usage);
 	process.exitCode = 1;
 }
+
+let error = ensureSheetExists()
+if (error) {
+	console.error('ERROR:', error);
+	process.exitCode = 1;
+}
+else
+	init();
+
 
 function ensureSheetExists() {
 	if (!fs.existsSync(sheetDir))
 		fs.mkdirSync(sheetDir, { recursive: true });
 
+	if (!fs.lstatSync(sheetDir).isDirectory())
+		return 'Your desired directory name is not available';
+
 	if (!fs.existsSync(sheetPath))
 		fs.copyFileSync(DEFAULT_TEMPLATE, sheetPath);
+
+	if (!fs.lstatSync(sheetPath).isFile())
+		return 'Your desired stylesheet name is not available';
 }
 
 function init() {

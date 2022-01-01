@@ -21,10 +21,6 @@ module.exports = {
 				onReady();
 		});
 
-		connector.stderr.on('data', stream => {
-			throw stream.toString();
-		});
-
 		return connector;
 	},
 
