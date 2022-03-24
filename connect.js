@@ -31,7 +31,7 @@ const DEFAULT_TEMPLATE = 'default-template.css';
 const COMPILATION_FAILURE_CODE = '0';
 const ALLOWED_ORIGINS = process.env.UXTELY_SKIP_ORIGIN_CHECK === 'yes'
 	? [''] // Only for running tests
-	: ['https://my.uxtely.com', 'https://free.uxtely.com'];
+	: ['https://my.uidrafter.com', 'https://free.uidrafter.com'];
 
 
 const compilers = new Map([
