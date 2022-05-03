@@ -11,22 +11,22 @@ const {
 	printOK,
 	strictEqual,
 	onWebSocketMessage
-} = require('./utils.js');
+} = require('./utils.js')
 
 
-const SHEET = '__Uxtely_Test__.less';
-write(SHEET, '.Red { color red }');
+const SHEET = '__Uxtely_Test__.less'
+write(SHEET, '.Red { color red }')
 
-const EXPECTED_ERROR_CODE = '0';
+const EXPECTED_ERROR_CODE = '0'
 
 const connector = run(SHEET, () => {
 	const ws = onWebSocketMessage(css => {
-		strictEqual(css, EXPECTED_ERROR_CODE);
-		printOK('Notifies syntax errors');
+		strictEqual(css, EXPECTED_ERROR_CODE)
+		printOK('Notifies syntax errors')
 
-		ws.close();
-		connector.kill();
-		remove(SHEET);
-	});
-});
+		ws.close()
+		connector.kill()
+		remove(SHEET)
+	})
+})
 

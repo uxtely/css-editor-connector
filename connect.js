@@ -14,24 +14,24 @@
 const usage = `
 Usage Example:
   ./connect.js my-styles.less
-Supported Extensions: css, less, scss`;
+Supported Extensions: css, less, scss`
 
-process.on('unhandledRejection', error => { throw error });
+process.on('unhandledRejection', error => { throw error })
 
-const fs = require('fs');
-const path = require('path');
-const server = require('http').createServer();
-const watch = require('node-watch');
-const WebSocketServer = require('ws').Server;
-const sass = require('util').promisify(require('sass').render);
-const less = require('less').render;
+const fs = require('fs')
+const path = require('path')
+const server = require('http').createServer()
+const watch = require('node-watch')
+const WebSocketServer = require('ws').Server
+const sass = require('util').promisify(require('sass').render)
+const less = require('less').render
 
-const PORT = 29924; // Allowed in CSP
-const DEFAULT_TEMPLATE = 'default-template.css';
-const COMPILATION_FAILURE_CODE = '0';
+const PORT = 29924 // Allowed in CSP
+const DEFAULT_TEMPLATE = 'default-template.css'
+const COMPILATION_FAILURE_CODE = '0'
 const ALLOWED_ORIGINS = process.env.UXTELY_SKIP_ORIGIN_CHECK === 'yes'
 	? [''] // Only for running tests
-	: ['https://my.uidrafter.com', 'https://free.uidrafter.com'];
+	: ['https://my.uidrafter.com', 'https://free.uidrafter.com']
 
 
 const compilers = new Map([
@@ -43,76 +43,76 @@ const compilers = new Map([
 
 	['.scss', file => sass({ file })
 		.then(res => res.css.toString())]
-]);
+])
 
-const sheetPath = path.resolve(process.argv[2] || '');
-const sheetDir = path.dirname(sheetPath);
-const compiler = compilers.get(path.extname(sheetPath));
+const sheetPath = path.resolve(process.argv[2] || '')
+const sheetDir = path.dirname(sheetPath)
+const compiler = compilers.get(path.extname(sheetPath))
 
 if (!compiler) {
-	console.error(usage);
-	process.exitCode = 1;
+	console.error(usage)
+	process.exitCode = 1
 }
 
 let error = ensureSheetExists()
 if (error) {
-	console.error('ERROR:', error);
-	process.exitCode = 1;
+	console.error('ERROR:', error)
+	process.exitCode = 1
 }
 else
-	init();
+	init()
 
 
 function ensureSheetExists() {
 	if (!fs.existsSync(sheetDir))
-		fs.mkdirSync(sheetDir, { recursive: true });
+		fs.mkdirSync(sheetDir, { recursive: true })
 
 	if (!fs.lstatSync(sheetDir).isDirectory())
-		return 'Your desired directory name is not available';
+		return 'Your desired directory name is not available'
 
 	if (!fs.existsSync(sheetPath))
-		fs.copyFileSync(DEFAULT_TEMPLATE, sheetPath);
+		fs.copyFileSync(DEFAULT_TEMPLATE, sheetPath)
 
 	if (!fs.lstatSync(sheetPath).isFile())
-		return 'Your desired stylesheet name is not available';
+		return 'Your desired stylesheet name is not available'
 }
 
 function init() {
-	const connections = new Set();
+	const connections = new Set()
 
 	function compileAndNotify() {
 		compiler(sheetPath)
 			.then(css => {
-				connections.forEach(ws => ws.send(css));
+				connections.forEach(ws => ws.send(css))
 			})
 			.catch(error => {
-				connections.forEach(ws => ws.send(COMPILATION_FAILURE_CODE));
-				console.info(error);
-			});
+				connections.forEach(ws => ws.send(COMPILATION_FAILURE_CODE))
+				console.info(error)
+			})
 	}
 
-	const watcher = watch(sheetDir, compileAndNotify);
-	watcher.on('error', console.error);
+	const watcher = watch(sheetDir, compileAndNotify)
+	watcher.on('error', console.error)
 	watcher.on('ready', () => {
 		new WebSocketServer({
 			server,
 			verifyClient: ({ origin = '' }) => ALLOWED_ORIGINS.some(ao => origin.startsWith(ao))
 		})
 			.on('connection', ws => {
-				connections.add(ws);
-				ws.on('close', () => { connections.delete(ws); });
-				ws.on('error', () => { connections.delete(ws), ws.terminate(); });
-				compileAndNotify();
-			});
+				connections.add(ws)
+				ws.on('close', () => { connections.delete(ws) })
+				ws.on('error', () => { connections.delete(ws), ws.terminate() })
+				compileAndNotify()
+			})
 
 		server.listen(PORT, 'localhost', error => {
 			if (error) {
-				console.error(error);
-				watcher.close();
+				console.error(error)
+				watcher.close()
 			}
 			else
-				console.log('Ready. Watching Directory:\n', sheetDir);
-		});
-	});
+				console.log('Ready. Watching Directory:\n', sheetDir)
+		})
+	})
 }
 

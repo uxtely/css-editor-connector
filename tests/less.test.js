@@ -11,34 +11,34 @@ const {
 	printOK,
 	strictEqual,
 	onWebSocketMessage
-} = require('./utils.js');
+} = require('./utils.js')
 
 
-const SHEET_IMPORT = '__Uxtely_Import_Test__.less';
-const SHEET = '__Uxtely_Test__.less';
+const SHEET_IMPORT = '__Uxtely_Import_Test__.less'
+const SHEET = '__Uxtely_Test__.less'
 
 write(SHEET_IMPORT, `
 @color: red;
-`);
+`)
 
 write(SHEET, `
 @import "${SHEET_IMPORT}";
 .Red { color: @color }
-`);
+`)
 
 const EXPECTED = `.Red {
   color: red;
 }
-`;
+`
 
 const connector = run(SHEET, () => {
 	const ws = onWebSocketMessage(css => {
-		strictEqual(css, EXPECTED);
-		printOK('Compiles Less');
+		strictEqual(css, EXPECTED)
+		printOK('Compiles Less')
 
-		ws.close();
-		connector.kill();
-		remove(SHEET, SHEET_IMPORT);
+		ws.close()
+		connector.kill()
+		remove(SHEET, SHEET_IMPORT)
 	})
 })
 

@@ -6,11 +6,11 @@
  * file in the root directory of this source tree.
  */
 
-const fs = require('fs');
-const { spawnSync } = require('child_process');
+const fs = require('fs')
+const { spawnSync } = require('child_process')
 
-process.env.UXTELY_SKIP_ORIGIN_CHECK = 'yes';
+process.env.UXTELY_SKIP_ORIGIN_CHECK = 'yes'
 
 for (const file of fs.readdirSync('tests'))
 	if (file.endsWith('.test.js'))
-		spawnSync('node', [`tests/${file}`], { stdio: 'inherit' });
+		spawnSync('node', [`tests/${file}`], { stdio: 'inherit' })

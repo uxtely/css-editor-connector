@@ -4,30 +4,30 @@
  * file in the root directory of this source tree.
  */
 
-const fs = require('fs');
-const { spawn } = require('child_process');
-const { strictEqual } = require('assert');
-const WebSocketClient = require('ws');
+const fs = require('fs')
+const { spawn } = require('child_process')
+const { strictEqual } = require('assert')
+const WebSocketClient = require('ws')
 
 
-const CONNECTOR_ADDR = 'ws://localhost:29924';
+const CONNECTOR_ADDR = 'ws://localhost:29924'
 
 module.exports = {
 	run(stylesheet, onReady) {
-		const connector = spawn('node', ['connect.js', stylesheet]);
+		const connector = spawn('node', ['connect.js', stylesheet])
 
 		connector.stdout.on('data', stream => {
 			if (stream.toString().startsWith('Ready'))
-				onReady();
-		});
+				onReady()
+		})
 
-		return connector;
+		return connector
 	},
 
 	onWebSocketMessage(onMessage) {
-		const ws = new WebSocketClient(CONNECTOR_ADDR);
-		ws.on('message', onMessage);
-		return ws;
+		const ws = new WebSocketClient(CONNECTOR_ADDR)
+		ws.on('message', onMessage)
+		return ws
 	},
 
 	read: file => fs.readFileSync(file, 'utf8'),
