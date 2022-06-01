@@ -6,16 +6,19 @@
   "dependencies": {
     "less": "4.1.2",
     "node-watch": "0.7.3",
-    "sass": "1.51.0",
+    "sass": "1.52.1",
     "ws": "7.5.6"
   },
   "engines": {
     "node": ">=16"
   },
   "homepage": "https://docs.uidrafter.com/css-editor",
-	"author": "Eric Fortis",
+  "author": "Eric Fortis",
   "repository": {
     "type": "git",
     "url": "https://github.com/uxtely/css-editor-connector.git"
+  },
+  "scripts": {
+    "test": "./connect.test.js"
   }
 }
