@@ -10,14 +10,14 @@ Supports `.css`, `.less`, `.scss`
 
 
 ## Install
-```shell script
+```sh
 git clone https://github.com/uxtely/css-editor-connector.git
 cd css-editor-connector
 npm install
 ```
 
 ## Usage Example
-```shell script
+```sh
 ./connect.js my-styles.less
 ```
 Then, **Previewer** &rarr; **CSS Editor** &rarr; **Connect External Editor**
@@ -28,7 +28,7 @@ You can connect many UI Drafter apps, for example in different
 browsers or sizes, and the changes will be pushed to all of them.
 
 The program watches for stylesheet changes, and changes in its directory. Therefore,
-imported sheets can trigger live-updates too, as long as they're within that directory.
+imported sheets can trigger live-updates too, as long as they are within that directory.
 
 
 ## Troubleshooting
@@ -39,7 +39,7 @@ Error Code `EADDRINUSE` means conflict.
 Syntax Errors
 - UI Drafter shows _"Error with the stylesheet on the
 External Editor Connector. Most likely is a syntax error."_
-  - If you're using `.less` or `.scss` check the
+  - If you’re using `.less` or `.scss` check the
   console, it will indicate where the error is.
 
 ## License
