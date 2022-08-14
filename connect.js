@@ -9,7 +9,7 @@
 /**
  * This program:
  * - On init, watches the directory of the passed-in stylesheet.
- * - On sheet edit, compiles and pushes the CSS to the connected UI Drafter App(s).
+ * - On sheet edit, compiles and pushes the CSS to the connected UI Drafter app(s).
  */
 const usage = `
 Usage Example:
@@ -111,7 +111,7 @@ function init() {
 				watcher.close()
 			}
 			else
-				console.log('Ready. Watching Directory:\n', sheetDir)
+				console.log('Ready. Watching Directory…\n', sheetDir)
 		})
 	})
 }
