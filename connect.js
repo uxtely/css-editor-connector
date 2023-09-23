@@ -18,9 +18,9 @@ Supported Extensions: css, less, scss`
 
 process.on('unhandledRejection', error => { throw error })
 
-const fs = require('fs')
-const path = require('path')
-const server = require('http').createServer()
+const fs = require('node:fs')
+const path = require('node:path')
+const server = require('node:http').createServer()
 const watch = require('node-watch')
 const WebSocketServer = require('ws').Server
 const sass = require('util').promisify(require('sass').render)

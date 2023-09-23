@@ -41,7 +41,6 @@ const tests = [
 function test() {
 	const ws = onWebSocketMessage(css => {
 		tests[testCount++](css)
-
 		if (testCount === tests.length) {
 			ws.close()
 			connector.kill()
