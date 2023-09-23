@@ -4,9 +4,9 @@
  * file in the root directory of this source tree.
  */
 
-const fs = require('fs')
-const { spawn } = require('child_process')
-const { strictEqual } = require('assert')
+const fs = require('node:fs')
+const { spawn } = require('node:child_process')
+const { strictEqual } = require('node:assert')
 const WebSocketClient = require('ws')
 
 
@@ -14,13 +14,11 @@ const CONNECTOR_ADDR = 'ws://localhost:29924'
 
 module.exports = {
 	run(stylesheet, onReady) {
-		const connector = spawn('node', ['connect.js', stylesheet])
-
+		const connector = spawn('./connect.js', [stylesheet])
 		connector.stdout.on('data', stream => {
 			if (stream.toString().startsWith('Ready'))
 				onReady()
 		})
-
 		return connector
 	},
 
