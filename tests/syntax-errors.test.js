@@ -7,14 +7,15 @@
 const {
 	run,
 	write,
-	remove,
 	printOK,
 	strictEqual,
+	makeTempDir,
 	onWebSocketMessage
 } = require('./utils.js')
 
 
-const SHEET = '__Uxtely_Test__.less'
+const DIR = makeTempDir() + '/'
+const SHEET = DIR + '__Uxtely_Test__.less'
 write(SHEET, '.Red { color red }')
 
 const EXPECTED_ERROR_CODE = '0'
@@ -23,10 +24,8 @@ const connector = run(SHEET, () => {
 	const ws = onWebSocketMessage(css => {
 		strictEqual(css, EXPECTED_ERROR_CODE)
 		printOK('Notifies syntax errors')
-
 		ws.close()
 		connector.kill()
-		remove(SHEET)
 	})
 })
 

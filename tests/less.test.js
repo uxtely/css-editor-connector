@@ -7,15 +7,16 @@
 const {
 	run,
 	write,
-	remove,
 	printOK,
 	strictEqual,
+	makeTempDir,
 	onWebSocketMessage
 } = require('./utils.js')
 
 
-const SHEET_IMPORT = '__Uxtely_Import_Test__.less'
-const SHEET = '__Uxtely_Test__.less'
+const DIR = makeTempDir() + '/'
+const SHEET_IMPORT = DIR + '__Uxtely_Import_Test__.less'
+const SHEET = DIR + '__Uxtely_Test__.less'
 
 write(SHEET_IMPORT, `
 @color: red;
@@ -35,10 +36,8 @@ const connector = run(SHEET, () => {
 	const ws = onWebSocketMessage(css => {
 		strictEqual(css, EXPECTED)
 		printOK('Compiles Less')
-
 		ws.close()
 		connector.kill()
-		remove(SHEET, SHEET_IMPORT)
 	})
 })
 

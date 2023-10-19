@@ -8,15 +8,15 @@ const {
 	run,
 	read,
 	append,
-	remove,
 	printOK,
-	removeDir,
 	strictEqual,
+	makeTempDir,
 	onWebSocketMessage
 } = require('./utils.js')
 
 
-const DIR = '__Uxtely_Test_Dir__'
+const DIR = makeTempDir()
+console.log('dir',DIR);
 const SUBDIR = DIR + '/a'
 const SHEET = SUBDIR + '/Test.css'
 const INITIAL = read('default-template.css')
@@ -44,8 +44,6 @@ function test() {
 		if (testCount === tests.length) {
 			ws.close()
 			connector.kill()
-			remove(SHEET)
-			removeDir(SUBDIR, DIR)
 		}
 	})
 }

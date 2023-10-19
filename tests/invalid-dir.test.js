@@ -1,8 +1,8 @@
 const fs = require('fs')
-const { run, strictEqual } = require('./utils.js')
+const { run, write, strictEqual } = require('./utils.js')
 
 const EXISTING_FILE = '__Uxtely_TestFileCreation__'
-fs.writeFileSync(EXISTING_FILE, '')
+write(EXISTING_FILE, '')
 
 const connector = run(EXISTING_FILE + '/foo.css', () => {})
 

@@ -5,6 +5,7 @@
  */
 
 const fs = require('node:fs')
+const { tmpdir } = require('node:os')
 const { spawn } = require('node:child_process')
 const { strictEqual } = require('node:assert')
 const WebSocketClient = require('ws')
@@ -31,8 +32,7 @@ module.exports = {
 	read: file => fs.readFileSync(file, 'utf8'),
 	write(file, data) { fs.writeFileSync(file, data, 'utf8') },
 	append(file, data) { fs.appendFileSync(file, data, 'utf8') },
-	remove(...files) { files.forEach(f => fs.unlinkSync(f)) },
-	removeDir(...dirs) { dirs.forEach(d => fs.rmSync(d, { recursive: true })) },
+	makeTempDir: () => fs.mkdtempSync(tmpdir()),
 
 	strictEqual,
 	printOK(msg) { console.log('✓', msg) }

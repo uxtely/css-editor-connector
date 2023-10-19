@@ -7,15 +7,16 @@
 const {
 	run,
 	write,
-	remove,
 	printOK,
 	strictEqual,
+	makeTempDir,
 	onWebSocketMessage
 } = require('./utils.js')
 
 
-const SHEET_IMPORT = '__Uxtely_Import_Test__.scss'
-const SHEET = '__Uxtely_Test__.scss'
+const DIR = makeTempDir() + '/'
+const SHEET_IMPORT = DIR + '__Uxtely_Import_Test__.scss'
+const SHEET = DIR + '__Uxtely_Test__.scss'
 
 write(SHEET_IMPORT, `
 $color: red;
@@ -34,10 +35,8 @@ const connector = run(SHEET, () => {
 	const ws = onWebSocketMessage(css => {
 		strictEqual(css, EXPECTED)
 		printOK('Compiles SCSS')
-
 		ws.close()
 		connector.kill()
-		remove(SHEET, SHEET_IMPORT)
 	})
 })
 
