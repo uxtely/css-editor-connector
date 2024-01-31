@@ -9,7 +9,7 @@
 /**
  * This program:
  * - On init, watches the directory of the passed-in stylesheet.
- * - On sheet edit, compiles and pushes the CSS to the connected UI Drafter app(s).
+ * - On sheet edit, compiles and pushes the CSS to the connected UI Rig app(s).
  */
 const usage = `
 Usage Example:
@@ -29,9 +29,9 @@ const less = require('less').render
 const PORT = 29924 // Allowed in CSP
 const DEFAULT_TEMPLATE = 'default-template.css'
 const COMPILATION_FAILURE_CODE = '0'
-const ALLOWED_ORIGINS = process.env.UXTELY_SKIP_ORIGIN_CHECK === 'yes'
-	? [''] // Only for running tests
-	: ['https://my.uidrafter.com', 'https://free.uidrafter.com']
+const ALLOWED_ORIGIN = process.env.UXTELY_SKIP_ORIGIN_CHECK === 'yes'
+	? '' // Only for running tests
+	: 'https://my.uirig.com'
 
 
 const compilers = new Map([
@@ -96,7 +96,7 @@ function init() {
 	watcher.on('ready', () => {
 		new WebSocketServer({
 			server,
-			verifyClient: ({ origin = '' }) => ALLOWED_ORIGINS.some(ao => origin.startsWith(ao))
+			verifyClient: ({ origin = '' }) => ALLOWED_ORIGIN === origin
 		})
 			.on('connection', ws => {
 				connections.add(ws)
