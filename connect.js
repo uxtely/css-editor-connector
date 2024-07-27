@@ -9,7 +9,7 @@
 /**
  * This program:
  * - On init, watches the directory of the passed-in stylesheet.
- * - On sheet edit, compiles and pushes the CSS to the connected UI Rig app(s).
+ * - On sheet edit, compiles and pushes the CSS to the connected Uxtly app(s).
  */
 const usage = `
 Usage Example:
@@ -31,7 +31,7 @@ const DEFAULT_TEMPLATE = 'default-template.css'
 const COMPILATION_FAILURE_CODE = '0'
 const ALLOWED_ORIGIN = process.env.UXTELY_SKIP_ORIGIN_CHECK === 'yes'
 	? '' // Only for running tests
-	: 'https://my.uirig.com'
+	: 'https://my.uxtly.com'
 
 
 const compilers = new Map([
